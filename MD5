@@ -1,0 +1,15 @@
+279dd37b55c6eeb5e0eb39d4860adb95 *DESCRIPTION
+df786e9cde6b146e990059b7d73b8432 *NAMESPACE
+3f1a1306719f82452134422de679537f *R/legend.R
+157bd68e542f11baccb856263cdccede *R/package.R
+6ab6e566fc6f7310fc858d511427eb3e *R/tanaka.R
+7058cdef00a7e4d4ec98f1982c199f46 *R/tanaka_contour.R
+c981abeba3e356c916b955233ab6d16e *README.md
+9b49a30eeb5d0b420b2e5110dbb298b3 *inst/gpkg/com.gpkg
+219376f3bbcca24320c6d777addd731c *inst/grd/elev.grd
+10c6543eedca9d6b2859163a3176e562 *inst/grd/elev.gri
+3d5d3ddb95dc32cdca0fa0edbfffd2ac *man/tanaka.Rd
+6f65265671c6a2a3c6a5099c09ee7e52 *man/tanaka_contour.Rd
+0fe50e74e45f783a1eea8af7c63d912c *tests/testthat.R
+f81711ae869e1e2799c79c82908b37d6 *tests/testthat/Rplots.pdf
+b3b20ac69dab80bba25886c55802fdba *tests/testthat/test_tanaka.R
