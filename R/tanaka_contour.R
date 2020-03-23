@@ -10,7 +10,7 @@
 #' value of the raster in the MULTIPOLYGON).
 #' @export
 #' @importFrom sf st_sf st_sfc st_geometry st_collection_extract st_crs st_agr<-
-#' st_cast st_intersection st_union st_as_sf st_geometry<-
+#' st_cast st_intersection st_union st_as_sf st_geometry<- st_set_crs
 #' @importFrom isoband isobands iso_to_sfg
 #' @importFrom raster extent ncol nrow xres yres values
 #' @importFrom lwgeom st_make_valid
@@ -78,12 +78,12 @@ tanaka_contour <- function(x, nclass = 8, breaks, mask) {
 
   # mask management
   if (!missing(mask)) {
-    if (methods::is(mask, "Spatial")) {
-      mask <- st_as_sf(mask)
-    }
     st_agr(iso) <- "constant"
-    iso <- st_cast(st_intersection(x = iso, y = st_union(mask)))
+    if(st_crs(iso)$proj4string == st_crs(mask)$proj4string){
+      iso <- st_set_crs(iso, NA)
+      iso <- st_set_crs(iso, st_crs(mask))
+      iso <- st_cast(st_intersection(x = iso, y = st_union(mask)))
+    }
   }
-
   return(iso)
 }
