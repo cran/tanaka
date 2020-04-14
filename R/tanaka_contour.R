@@ -11,9 +11,9 @@
 #' @export
 #' @importFrom sf st_sf st_sfc st_geometry st_collection_extract st_crs st_agr<-
 #' st_cast st_intersection st_union st_as_sf st_geometry<- st_set_crs
+#' st_make_valid
 #' @importFrom isoband isobands iso_to_sfg
 #' @importFrom raster extent ncol nrow xres yres values
-#' @importFrom lwgeom st_make_valid
 #' @examples
 #' library(tanaka)
 #' library(raster)
@@ -71,6 +71,7 @@ tanaka_contour <- function(x, nclass = 8, breaks, mask) {
 
   # clean geoms
   st_geometry(iso) <- st_make_valid(st_geometry(iso))
+
   if (methods::is(st_geometry(iso), "sfc_GEOMETRY")) {
     st_geometry(iso) <-
       st_collection_extract(st_geometry(iso), "POLYGON")
@@ -82,7 +83,7 @@ tanaka_contour <- function(x, nclass = 8, breaks, mask) {
     if(st_crs(iso)$proj4string == st_crs(mask)$proj4string){
       iso <- st_set_crs(iso, NA)
       iso <- st_set_crs(iso, st_crs(mask))
-      iso <- st_cast(st_intersection(x = iso, y = st_union(mask)))
+      iso <- st_cast(st_intersection(x = iso, y = st_union(st_geometry(mask))))
     }
   }
   return(iso)

@@ -1,3 +1,11 @@
+# tanaka 0.1.3
+
+## Minor changes
+
+- Changes to accomodate sf >= 0.9 and st_make_valid no longer in lwgeom
+
+
+
 # tanaka 0.1.2
 
 ## Minor changes
