@@ -26,20 +26,25 @@
 #' @return A Tanaka contour map is plotted.
 #' @examples
 #' library(tanaka)
-#' library(raster)
+#' library(terra)
 #' library(sf)
 #' com <- st_read(system.file("gpkg/com.gpkg", package = "tanaka"),
-#'                quiet = TRUE)
-#' ras <- raster(system.file("grd/elev.grd", package = "tanaka"))
+#'   quiet = TRUE
+#' )
+#' ras <- rast(system.file("tif/elev.tif", package = "tanaka"))
 #' tanaka(ras)
 #' tanaka(ras, mask = com)
-#' tanaka(ras, breaks = seq(80,400,20),
-#'        legend.pos = "topright",
-#'        legend.title = "Elevation\n(meters)")
-#' tanaka(ras, nclass = 15,
-#'        col = hcl.colors(15, "YlOrRd"),
-#'        legend.pos = "topright",
-#'        legend.title = "Elevation\n(meters)")
+#' tanaka(ras,
+#'   breaks = seq(80, 400, 20),
+#'   legend.pos = "topright",
+#'   legend.title = "Elevation\n(meters)"
+#' )
+#' tanaka(ras,
+#'   nclass = 15,
+#'   col = hcl.colors(15, "YlOrRd"),
+#'   legend.pos = "topright",
+#'   legend.title = "Elevation\n(meters)"
+#' )
 tanaka <- function(x,
                    nclass = 8,
                    breaks,
@@ -51,7 +56,7 @@ tanaka <- function(x,
                    legend.pos = "left",
                    legend.title = "Elevation",
                    add = FALSE) {
-  if (methods::is(x, "RasterLayer")) {
+  if (methods::is(x, "SpatRaster")) {
     x <-
       tanaka_contour(
         x = x,
@@ -92,9 +97,10 @@ tanaka <- function(x,
   }
   x <- x[order(x$min), ]
   plot(st_geometry(x),
-       col = NA,
-       border = NA,
-       add = add)
+    col = NA,
+    border = NA,
+    add = add
+  )
   for (i in seq_len(nrow(x))) {
     p <- st_geometry(x[i, ])
     plot(
@@ -110,9 +116,10 @@ tanaka <- function(x,
       add = TRUE
     )
     plot(p,
-         col = col[i],
-         border = "NA",
-         add = TRUE)
+      col = col[i],
+      border = "NA",
+      add = TRUE
+    )
   }
   legendtanaka(
     pos = legend.pos,
