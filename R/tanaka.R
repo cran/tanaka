@@ -2,7 +2,7 @@
 #' @name tanaka
 #' @description This function plots a tanaka map.
 #' @param x a raster or an sf contour layer (e.g. the result of
-#' \code{tanaka_contour()}).
+#' \code{tanaka_contour()}, "min" and "max" columns are needed).
 #' @param nclass a number of class.
 #' @param breaks a vector of break values.
 #' @param mask a mask layer, a POLYGON or MULTIPOLYGON sf object.
@@ -21,6 +21,7 @@
 #' @importFrom sf st_geometry st_bbox
 #' @importFrom grDevices colorRampPalette
 #' @importFrom graphics plot
+#' @importFrom terra crs
 #' @references Tanaka, K. (1950). The relief contour method of representing
 #' topography on maps. \emph{Geographical Review, 40}(3), 444-456.
 #' @return A Tanaka contour map is plotted.
@@ -56,7 +57,7 @@ tanaka <- function(x,
                    legend.pos = "left",
                    legend.title = "Elevation",
                    add = FALSE) {
-  if (methods::is(x, "SpatRaster")) {
+  if (inherits(x = x, what = "SpatRaster")) {
     x <-
       tanaka_contour(
         x = x,

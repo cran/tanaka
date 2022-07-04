@@ -1,14 +1,16 @@
-# Tanaka
+
+
+# Tanaka <img src="man/figures/logo.png" align="right" width="140"/>
 
 [![Cran version](https://www.r-pkg.org/badges/version-ago/tanaka)](https://CRAN.R-project.org/package=tanaka)
 [![R-CMD-check](https://github.com/riatelab/tanaka/workflows/R-CMD-check/badge.svg)](https://github.com/riatelab/tanaka/actions)
 [![Coverage status](https://codecov.io/gh/riatelab/tanaka/branch/master/graph/badge.svg)](https://codecov.io/github/riatelab/tanaka?branch=master)
 ![N. Download](https://cranlogs.r-pkg.org/badges/grand-total/tanaka?color=brightgreen)  
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 
-
-
-![](https://raw.githubusercontent.com/riatelab/tanaka/master/img/banner.png)  
 
 Also called "relief contours method", "illuminated contour method" or "shaded 
 contour lines method", the Tanaka method<sup>[1](#fn1)</sup> enhances the representation of topography 
